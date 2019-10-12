@@ -24,7 +24,10 @@ class DatabaseManager():
         'databaseURL': 'https://mhacks12-22906.firebaseio.com/'
     })
 
-    ref = db.reference('notes')
+    def __init__(self, db_name):
+        self.ref = db.reference(db_name)
+
+   
 
     def add_note_to_db(self, note):
         new_note = self.ref.push({
@@ -70,7 +73,7 @@ n = Note(2, "Physics", "First Law"
 "Third Law"
 "The third law says that for every action (force) there is an equal and opposite reaction (force). Forces are found in pairs. Think about the time you sit in a chair. Your body exerts a force downward and that chair needs to exert an equal force upward or the chair will collapse. It's an issue of symmetry. Acting forces encounter other forces in the opposite direction. There's also the example of shooting a cannonball. When the cannonball is fired through the air (by the explosion), the cannon is pushed backward. The force pushing the ball out was equal to the force pushing the cannon back, but the effect on the cannon is less noticeable because it has a much larger mass. That example is similar to the kick when a gun fires a bullet forward.")
 # print(n.note)
-dm = DatabaseManager()
+dm = DatabaseManager("notes")
 # k = dm.add_note_to_db(n)
 # print(k)
 # v = dm.get_note_key(k)
