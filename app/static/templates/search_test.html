@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.cardPhysics {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 15em;
+}
+
+.cardPhysics:hover {
+  box-shadow: 0 16px 26px 0 rgba(0,0,0,0.2);
+}
+
+.cardMath {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 15em;
+}
+
+.cardMath:hover {
+  box-shadow: 0 16px 26px 0 rgba(0,0,0,0.2);
+}
+
+.cardChem {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 15em;
+}
+
+.cardChem:hover {
+  box-shadow: 0 16px 26px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+</head>
+<body>
+
+<center>
+
+<h2>Random Shit</h2>
+<br/>
+<br/>
+<form action="#" onSubmit = "return hide()">
+  <input id = "selector" list="courses">
+  <datalist id="courses">
+    <option value="Mathematics">
+    <option value="Chemistry">
+    <option value="Physics">
+    <option value="English">
+    <option value="Computer Science">
+  </datalist>
+</form>
+<br>
+<button onclick="hide()">Search</button>
+<br/>
+<br/>
+
+<div class="cardMath">
+  <img src="adv_functions.jpg" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Advanced Functions</b></h4> 
+    <p>MHF4U</p> 
+  </div>
+</div>
+<br/><br/>
+
+<div class="cardPhysics">
+  <img src="physics_icon.png" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Gr 11 Physics</b></h4> 
+    <p>SPH3U</p> 
+  </div>
+</div>
+<br/><br/>
+
+<div class="cardChem">
+  <img src="chem_11.png" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Gr 11 Chemistry</b></h4> 
+    <p>SCH3U</p> 
+  </div>
+</div>
+<br/><br/>
+
+<div class="cardMath">
+  <img src="calc.png" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Calculus</b></h4> 
+    <p>MCV4U</p> 
+  </div>
+</div>
+<br/><br/>
+
+<div class="cardPhysics">
+  <img src="physics_icon2.png" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Gr 12 Physics</b></h4> 
+    <p>SPH4U</p> 
+  </div>
+</div>
+<br/><br/>
+
+<div class="cardChem">
+  <img src="chem_12.png" alt="Image" style="width:100%">
+  <div class="container">
+    <h4><b>Gr 12 Chemistry</b></h4> 
+    <p>SCH4U</p> 
+  </div>
+</div>
+<br/><br/>
+
+</center>
+
+</body>
+
+<script>
+
+function hide(){
+	
+	//#var inputValue = document.getElementById("searchInput").value.toLowerCase();
+	//console.log(inputValue);
+	var inputValue = document.getElementById("selector").value.toLowerCase();
+	console.log(inputValue);
+	//console.log(inputValue.includes("phys"));
+	
+	if (inputValue == "physics"){
+		
+		var x = document.getElementsByClassName("cardMath");
+		var y = document.getElementsByClassName("cardChem");
+
+		var i;
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none";
+		}
+		for (i = 0; i < y.length; i++) {
+		  y[i].style.display = "none";
+		}
+		console.log("PHYSICS");
+		
+	}
+	
+	else if (inputValue == "mathematics"){
+		
+		var x = document.getElementsByClassName("cardPhysics");
+		var y = document.getElementsByClassName("cardChem");
+
+		var i;
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none";
+		}
+		for (i = 0; i < y.length; i++) {
+		  y[i].style.display = "none";
+		}
+		console.log("MATH");
+		
+	}
+	
+	else if (inputValue == "chemistry"){
+		
+		var x = document.getElementsByClassName("cardMath");
+		var y = document.getElementsByClassName("cardPhysics");
+
+		var i;
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none";
+		}
+		for (i = 0; i < y.length; i++) {
+		  y[i].style.display = "none";
+		}
+		console.log("CHEM");
+		
+	}
+	
+	return false;
+}
+
+/*
+setTimeout(function() {
+  console.log("Loading");
+}, 2000);
+
+setTimeout(hideMaths(),3000);
+*/
+</script>
+
+</html> 

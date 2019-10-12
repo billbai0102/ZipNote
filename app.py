@@ -1,6 +1,20 @@
-from flask import Flask, render_template
-app = Flask(__name__, template_folder='templates')
+from flask import Flask, render_template, request
+import getsearch
+
+app = Flask(__name__)
+
 
 @app.route('/')
+def main():
+    return render_template('index.html')
+
+
+@app.route("/index")
 def index():
-    return " This is MHacks12."
+    return render_template('index.html')
+
+
+@app.route('/<search>', methods=['GET', 'POST'])
+def pass_val(search):
+    print(search)
+    return render_template('index.html')
