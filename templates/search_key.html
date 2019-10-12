@@ -14,14 +14,6 @@
         />
     </head>
     <body>
-	<p style="float: right;">
-	<img
-            style="top: 20px; right: 20px; position: absolute;"
-            src="../static/images/test_logo.png"
-            alt="back"
-            width="180px"
-            height="140px"
-    /></p>
             <div class="container" style="min-height:100% width:80%">
                     {% with messages = get_flashed_messages() %}
                       {% if messages %}
@@ -38,7 +30,7 @@
                     </div>
                     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <div class="s130">
-            <form method="POST" action="{{ url_for('pass_val') }}">
+            <form method="POST" action="{{ url_for('search_key') }}">
                 <div class="inner-form">
                     <div class="input-field first-wrap">
                         <div class="svg-wrapper">
@@ -56,8 +48,8 @@
                         <input
                             id="search"
                             type="text"
-                            name="search"
-                            placeholder="Enter a Course Name"
+                            name="key"
+                            placeholder="Enter a Note Key"
                         />
                     </div>
                     <div class="input-field second-wrap">

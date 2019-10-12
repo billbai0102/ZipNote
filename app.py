@@ -53,19 +53,20 @@ def index():
 def sms_ahoy_reply():
     global lang
     global sn_translated
-    courses=["physics", "computer science"] ##WHERE THE COURSES ARE STORED
+    courses = ["physics", "computer science"]  # WHERE THE COURSES ARE STORED
     client = Client(account_sid, auth_token)
     resp = MessagingResponse()
     premes = ""
     messages = client.messages.list(limit=1)
     for record in messages:
-        premes=record.body
+        premes = record.body
         print(".1.1.1.1.1.1.1")
         print(premes)
         print(".1.1.1.1.1.1.1")
 
     if(translation.createTranslation(premes, "English").lower() in courses):
-        super_notes_list = dm.find_notes_by_course_name(translation.createTranslation(premes, language="en").lower())
+        super_notes_list = dm.find_notes_by_course_name(
+            translation.createTranslation(premes, language="en").lower())
         print("----------")
         print(lang)
         print("----------")
@@ -111,24 +112,25 @@ def pass_val():
     return render_template('results.html', note=sn_translated, title=title_translated)
 
 
-@app.route('/addnote.html')
+@app.route('/add_note')
 def add_note():
     form = AddNoteForm()
-    return render_template('addnote.html', title='Add New Note', form=form)
+    return render_template('add_note.html', title='Add New Note', form=form)
 
 
-@app.route('/add_note', methods=['GET', 'POST'])
+@app.route('/add_note', methods=['POST'])
 def add_new_note():
     form = AddNoteForm()
     if form.validate_on_submit():
-        flash('Note Added: With course key: {} and Course Name: {}'.format(
-            form.course_key.data, form.course_name.data))
         course_name = form.course_name.data
         new_note = Note(form.course_key.data,
                         course_name.lower(), form.note.data)
-        notesManager.add_note_to_db(new_note)
+        note_key = notesManager.add_note_to_db(new_note)
+        flash('Note Added: With course key: {} and Course Name: {} . Share your notes with your friends: {}'.format(
+            form.course_key.data, form.course_name.data, note_key))
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
+
 
 @app.route('/super_note', methods=['POST'])
 def generate_super_note():
@@ -139,7 +141,24 @@ def generate_super_note():
         sn = na.run_quickstart()
     return render_template('results.html', note=sn)
 
+
 @app.route('/super_note')
 def super_note():
     form = SuperNoteForm()
     return render_template('super_note.html', title='Generate Super Note', form=form)
+
+
+@app.route('/search_key')
+def search_key_page():
+    return render_template('search_key.html')
+
+@app.route('/search_key', methods=['POST'])
+def search_key():
+    key = request.form.get('key')
+    language = request.form.get('language-choice')
+    print(key + language)
+    note_data = notesManager.get_note_key(key)
+    pprint.pprint(note_data)
+    sn_translated = translation.createTranslation(note_data["note"], language)
+    pprint.pprint(sn_translated)
+    return render_template('results.html', note=sn_translated)

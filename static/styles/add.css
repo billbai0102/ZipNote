@@ -14,6 +14,9 @@ html {
  */
 body {
     margin: 0;
+    background: url('../images/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
+    background-position: 0px -130px;
+    background-size: 100%;
 }
 
 /**
@@ -34,7 +37,7 @@ section {
  */
 h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: 5px 0 0.67em 0;
 }
 
 /* Grouping content
@@ -331,21 +334,21 @@ progress {
  */
 textarea {
     overflow: auto;
-	border-radius: 5px;
-	background-color:#edfaf3;
-	padding: 1em 1em 1em 1em;
+    border-radius: 5px;
+    background-color: #edfaf3;
+    padding: 1em 1em 1em 1em;
 }
 
 #course_key {
-	border-radius: 50px;
-	background-color:#edfaf3;
-	padding: 0em 1em 0em 1em;
+    border-radius: 50px;
+    background-color: #edfaf3;
+    padding: 0em 1em 0em 1em;
 }
 
 #course_name {
-	border-radius: 50px;
-	background-color:#edfaf3;
-	padding: 0em 1em 0em 1em;
+    border-radius: 50px;
+    background-color: #edfaf3;
+    padding: 0em 1em 0em 1em;
 }
 
 /**
@@ -848,9 +851,7 @@ form {
     -ms-flex-pack: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    background: url('../images/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
-    background-position: 0px -130px;
-    background-size: 100%;
+
     padding: 15px;
 }
 
@@ -915,7 +916,7 @@ form {
     flex-grow: 1;
     display: -ms-flexbox;
     display: flex;
-   
+
     align-items: center;
     background: #d9f1e3;
 }
@@ -987,7 +988,7 @@ form {
     background: #00ad5f;
     transition: all 0.2s ease-out, color 0.2s ease-out;
     font-weight: 300;
-	border-radius: 100px;
+    border-radius: 100px;
 }
 
 .s130 form .inner-form .input-field.third-wrap .btn-search:hover {
@@ -1000,13 +1001,49 @@ form {
 }
 
 .s130 form .info {
-	font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
     color: #d9f1e3;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
     padding-left: 26px;
+}
 
+#back > button,
+#submit {
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 15px;
+    margin: 20px;
+    font-size: 20px;
+    color: #fff;
+    border-color: #000;
+    border-width: 2px;
+    border-radius: 40px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 0;
+    background: #00ad5f;
+    transition: all 0.2s ease-out, color 0.2s ease-out;
+    font-weight: 300;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+#submit {
+    position: relative;
+    margin: 0;
+}
+
+#back > button:hover,
+#submit:hover {
+    background: #000;
+    color: #d9f1e3;
+}
+
+#back > button:focus,
+#submit:focus {
+    outline: 0;
+    box-shadow: none;
 }
 
 @media screen and (max-width: 992px) {
