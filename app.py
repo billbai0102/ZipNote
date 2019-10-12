@@ -32,6 +32,7 @@ auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
 
 dm = DatabaseManager("super_notes")
 notesManager = DatabaseManager("notes")
+sn_translated = "Oops! Something's wrong with Twilio servers!"
 
 
 @app.route('/')
@@ -50,19 +51,29 @@ def index():
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
     global lang
-    courses = ["physics", "computer science"]  # WHERE THE COURSES ARE STORED
+    global sn_translated
+    courses=["physics", "computer science"] ##WHERE THE COURSES ARE STORED
     client = Client(account_sid, auth_token)
     resp = MessagingResponse()
     premes = ""
     messages = client.messages.list(limit=1)
     for record in messages:
-        premes = record.body
+        premes=record.body
+        print(".1.1.1.1.1.1.1")
+        print(premes)
+        print(".1.1.1.1.1.1.1")
+
     if(translation.createTranslation(premes, "English").lower() in courses):
-        super_notes_list = dm.find_notes_by_course_name(premes)
+        super_notes_list = dm.find_notes_by_course_name(translation.createTranslation(premes, language="en").lower())
+        print("----------")
+        print(lang)
+        print("----------")
         for note in super_notes_list:
             sn_translated = translation.createTranslation(note['note'], lang)
+            print(note['note'])
         resp.message(sn_translated)
         return str(resp)
+
     lang = str(premes)
     resp.message(translation.createTranslation(
         "Enter a course you wish to learn about.", language=lang))
@@ -79,8 +90,11 @@ def results():
     return render_template('results.html')
 
 
-@app.route('/<search>/<language>', methods=['GET', 'POST'])
-def pass_val(search, language):
+@app.route('/search', methods=['POST'])
+def pass_val():
+    search = request.form.get('search')
+    language = request.form.get('language-choice')
+    print(language)
     print(search + language)
     s = translation.createTranslation(search, "EN")
     print(s)
@@ -89,7 +103,7 @@ def pass_val(search, language):
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
         pprint.pprint(sn_translated)
-    return "hello"
+    return render_template('results.html', note=sn_translated)
 
 
 @app.route('/addnote.html')

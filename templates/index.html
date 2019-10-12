@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="s130">
-            <form>
+            <form method="POST" action="{{ url_for('pass_val') }}">
                 <div class="inner-form">
                     <div class="input-field first-wrap">
                         <div class="svg-wrapper">
@@ -40,6 +40,7 @@
                     <div class="input-field second-wrap">
                         <select
                             id="language-choice"
+                            name="language-choice"
                             data-placeholder="Choose a Language..."
                         >
                             <option value="Afrikanns">Afrikanns</option>
@@ -163,7 +164,7 @@
                         </select>
                     </div>
                     <div class="input-field third-wrap">
-                        <button class="btn-search" type="button">
+                        <button class="btn-search" type="submit">
                             SEARCH
                         </button>
                     </div>
