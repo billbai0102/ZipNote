@@ -9,7 +9,7 @@ import translation
 app = Flask(__name__)
 
 if (not len(firebase_admin._apps)):
-    cred = credentials.Certificate('static/mhacks12-22906-firebase-adminsdk-lbt7e-d7c9a27bb5.json') 
+    cred = credentials.Certificate('static/mhacks12-22906-firebase-adminsdk-lbt7e-d7c9a27bb5.json')
     default_app = firebase_admin.initialize_app(cred,  {'databaseURL': 'https://mhacks12-22906.firebaseio.com/'})
 
 lang = ""
@@ -20,6 +20,7 @@ dm = DatabaseManager("super_notes")
 @app.route('/')
 def main():
     return render_template('index.html')
+
 
 @app.route("/index")
 def index():
@@ -45,10 +46,22 @@ def sms_ahoy_reply():
     # resp.message("Hello")
 
     # return str(resp)
-    
+
 """
 
 def get_supernote(course):
     cl = dm.find_notes_by_course_name(course)
     return cl
-    
+
+
+    return render_template('index.html')
+
+@app.route("/results")
+def results():
+    return render_template('results.html')
+
+@app.route('/<search>', methods=['GET', 'POST'])
+def pass_val(search):
+    print(search)
+
+    return render_template('index.html')
