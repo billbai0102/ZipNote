@@ -14,7 +14,24 @@
             rel="stylesheet"
         />
     </head>
-    <body><a href="javascript:history.back()"><img style="position: fixed; z-index: 10; padding-left:2em;" src = "../static/images/back_arrow.png" alt = "back" width = "180px" height = "140px"></a>
+    <body>
+        <!-- <a href="javascript:history.back()"
+            ><img
+                style="position: fixed; z-index: 10; padding-left:2em;"
+                src="../static/images/back_arrow.png"
+                alt="back"
+                width="180px"
+                height="140px"
+        /></a> -->
+        <div id="back">
+            <button
+                onclick="window.location.href='javascript:history.back()'"
+                type="button"
+            >
+                &#8689; Back to Search
+            </button>
+        </div>
+
         <div class="s130">
             <center>
                 <h1
