@@ -8,11 +8,16 @@
             href="https://fonts.googleapis.com/css?family=Poppins"
             rel="stylesheet"
         />
+		
         <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" />
     </head>
     <body>
+	 <div class="s130">
+	 <center>
         <h1>Add Note</h1>
-        <form action="" method="post" novalidate>
+        <form style=" padding-top: 0em; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000; font-size: 20px;
+    color: #d9f1e3;" action="" method="post" novalidate>
             {{ form.hidden_tag() }}
             <p>
                 {{ form.course_key.label }}<br>
@@ -24,12 +29,14 @@
             </p>
             <p>
                 {{ form.note.label }}<br>
-                {{ form.note(cols="55", rows="20") }}
+                {{ form.note(cols="55", rows="16") }}
             </p>
             <p>{{ form.submit() }}</p>
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../static/js/extention/choices.js"></script>
-    </body>
+		</center>
+		</div>
+	</body>
     <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

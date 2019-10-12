@@ -900,7 +900,7 @@ form {
     flex-grow: 1;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
+   
     align-items: center;
     background: #d9f1e3;
 }
@@ -984,6 +984,7 @@ form {
 }
 
 .s130 form .info {
+	font-family: 'Poppins', sans-serif;
     font-size: 20px;
     color: #d9f1e3;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
