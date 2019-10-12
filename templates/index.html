@@ -8,7 +8,10 @@
             href="https://fonts.googleapis.com/css?family=Poppins"
             rel="stylesheet"
         />
-        <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" />
+        <link
+            href="{{ url_for('static', filename='styles/main.css') }}"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <div class="s130">
@@ -27,7 +30,7 @@
                                 ></path>
                             </svg>
                         </div>
-                            <input
+                        <input
                             id="search"
                             type="text"
                             name="search"
@@ -35,6 +38,14 @@
                         />
                     </div>
                     <div class="input-field second-wrap">
+                        <select class="language-choice" name="language">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
+                    <div class="input-field third-wrap">
                         <button class="btn-search" type="button">
                             SEARCH
                         </button>
