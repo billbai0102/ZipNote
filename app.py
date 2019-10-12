@@ -4,7 +4,7 @@ from forms import AddNoteForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-from database import DatabaseManager
+from database import DatabaseManager, Note
 import firebase_admin
 from firebase_admin import credentials
 from twilio.twiml.messaging_response import MessagingResponse
@@ -24,6 +24,7 @@ account_sid = 'ACfb14e1aca55a02457161456ad28e2311'
 auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
 
 dm = DatabaseManager("super_notes")
+notesManager = DatabaseManager("notes")
 
 @app.route('/')
 def main():
@@ -50,6 +51,10 @@ def sms_ahoy_reply():
     lang = premes
     resp.message(translation.createTranslation("Enter a course you wish to learn about.", language=lang))
     return str(resp)
+    # # Add a message
+    # resp.message("Hello")
+
+    # return str(resp)
 
 def get_supernote(course):
     cl = dm.find_notes_by_course_name(course)
@@ -62,7 +67,7 @@ def results():
 @app.route('/<search>', methods=['GET', 'POST'])
 def pass_val(search):
     print(search)
-
+    if("phy" in search.)
     return render_template('index.html')
 
 
@@ -77,5 +82,7 @@ def login():
     if form.validate_on_submit():
         flash('Note Added: With course key: {} and Course Name: {}'.format(
             form.course_key.data, form.course_name.data))
+        new_note = Note( form.course_key.data, form.course_name.data, form.note.data)
+        notesManager.add_note_to_db(new_note)
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
