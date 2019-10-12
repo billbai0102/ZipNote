@@ -76,7 +76,7 @@ n = Note(2, "Physics", "First Law"
 dm = DatabaseManager("notes")
 # k = dm.add_note_to_db(n)
 # print(k)
-# v = dm.get_note_key(k)
+# v = dm.get_note_key("-LqyiulvtclaFSFsC4_Q")
 # print(v)
 
 # kl = dm.order_notes_by_key()
@@ -84,10 +84,16 @@ dm = DatabaseManager("notes")
 # for d in kl:
 #     pprint.pprint(d)
 
-cl = dm.find_notes_by_course_name("Physics")
-print("\n\n COURSE NAME ONLY\n")
+# cl = dm.find_notes_by_course_name("Physics")
+# print("\n\n COURSE NAME ONLY\n")
 # for d in cl:
     
 #     pprint.pprint(d)
 
-pprint.pprint(cl)
+#pprint.pprint(cl)
+
+dm2 = DatabaseManager("super_notes")
+# k = dm.add_note_to_db(n)
+# print(k)
+v = dm2.get_note_key("-LqzngmhUGa8xACd6fKz")
+pprint.pprint(v)
