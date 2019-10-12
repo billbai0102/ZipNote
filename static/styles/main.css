@@ -220,7 +220,8 @@ button,
 input,
 optgroup,
 select,
-textarea {
+textarea,
+form {
     font-family: sans-serif;
     /* 1 */
     font-size: 100%;
@@ -236,7 +237,8 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 button,
-input {
+input,
+form {
     /* 1 */
     overflow: visible;
 }
@@ -815,7 +817,8 @@ legend {
 
 /*=====  End of Choices  ======*/
 input,
-button {
+button,
+form {
     font-family: 'Poppins', sans-serif;
 }
 

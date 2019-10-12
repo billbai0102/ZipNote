@@ -1,6 +1,10 @@
-from flask import Flask, render_template
-app = Flask(__name__, template_folder='templates')
+from flask import Flask, render_template, request
+app = Flask(__name__)
 
 @app.route('/')
+def main():
+    return render_template('index.html')
+
+@app.route("/index")
 def index():
-    return " This is MHacks12."
+    return render_template('index.html')
