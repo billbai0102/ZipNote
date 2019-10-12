@@ -71,7 +71,7 @@ def get_supernote(course):
 def results():
     return render_template('results.html')
 
-@app.route('/<search>/<language>', methods=['GET', 'POST'])
+@app.route('/<search>/<language>')
 def pass_val(search, language):
     print(search + language)
     s = translation.createTranslation(search, "EN")
@@ -81,7 +81,7 @@ def pass_val(search, language):
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
         pprint.pprint(sn_translated)
-    return render_template('index.html')
+    return "hello"
 
 
 @app.route('/add_note')
