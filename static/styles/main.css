@@ -14,6 +14,10 @@ html {
  */
 body {
     margin: 0;
+	
+    background: url('../images/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
+    background-position: 0px -130px;
+    background-size: 100%;
 }
 
 /**
@@ -833,9 +837,6 @@ form {
     -ms-flex-pack: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    background: url('../images/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
-    background-position: 0px -130px;
-    background-size: 100%;
     padding: 15px;
 }
 
