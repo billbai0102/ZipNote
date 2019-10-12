@@ -1,0 +1,16 @@
+ 
+The motion of an aircraft through the air can be explained and described by physical principals discovered over 300 years ago by Sir Isaac Newton
+ Some twenty years later, in 1686, he presented his three laws of motion in the "Principia Mathematica Philosophiae Naturalis
+Newton's first law states that every object will remain at rest or in uniform motion in a straight line unless compelled to change its state by the action of an external force
+ The key point here is that if there is no net force acting on an object (if all the external forces cancel each other out) then the object will maintain a constant velocity
+ If that velocity is zero, then the object remains at rest
+The second law explains how the velocity of an object changes when it is subjected to an external force
+ (Calculus can also be used to determine the velocity and location variations experienced by an object subjected to an external force
+) For an object with a constant mass m, the second law states that the force F is the product of an object's mass and its acceleration a:F = m * aFor an external applied force, the change in velocity depends on the mass of the object
+ In other words, if object A exerts a force on object B, then object B also exerts an equal force on object A
+ Notice that the forces are exerted on different objects
+First LawWith no outside forces, objects stay in one place or continue moving at the sape speed and sirection
+ If nothing is happening to you, and nothing does happen, you will never go anywhere
+ Have you ever noticed that their tools float? They can just place them in space and they stay in one place
+ There is no interfering force to cause this situation to change
+ The effect of a 10 newton force on a baseball would be much greater than that same force acting on a truck
