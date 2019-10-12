@@ -14,6 +14,7 @@ from firebase_admin import credentials
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 
+lang = "en"
 
 import pprint
 
@@ -23,8 +24,6 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 if (not len(firebase_admin._apps)):
     cred = credentials.Certificate('static/mhacks12-22906-firebase-adminsdk-lbt7e-d7c9a27bb5.json')
     default_app = firebase_admin.initialize_app(cred,  {'databaseURL': 'https://mhacks12-22906.firebaseio.com/'})
-
-lang = ""
 previous = ""
 account_sid = 'ACfb14e1aca55a02457161456ad28e2311'
 auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
@@ -47,6 +46,7 @@ def index():
 #####TWILIO######
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
+    global lang
     courses=["physics", "computer science"] ##WHERE THE COURSES ARE STORED
     client = Client(account_sid, auth_token)
     resp = MessagingResponse()
@@ -55,9 +55,11 @@ def sms_ahoy_reply():
     for record in messages:
         premes=record.body
     if(translation.createTranslation(premes, "English").lower() in courses):
-        resp.message("hi")
+        super_notes_list = dm.find_notes_by_course_name(premes)
+        for note in super_notes_list:
+            sn_translated = translation.createTranslation(note['note'], lang)
+        resp.message(sn_translated)
         return str(resp)
-
     lang = str(premes)
     resp.message(translation.createTranslation("Enter a course you wish to learn about.", language=lang))
     return str(resp)
