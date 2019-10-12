@@ -15,6 +15,8 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 
 
+import pprint
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
@@ -69,11 +71,17 @@ def get_supernote(course):
 def results():
     return render_template('results.html')
 
-@app.route('/<search>', methods=['GET', 'POST'])
-def pass_val(search):
-    print(search)
-    if("phy" in search):
-        return render_template('index.html')
+@app.route('/<search>/<language>', methods=['GET', 'POST'])
+def pass_val(search, language):
+    print(search + language)
+    s = translation.createTranslation(search, "EN")
+    print(s)
+    super_notes_list = dm.find_notes_by_course_name(s)
+    pprint.pprint(super_notes_list)
+    for note in super_notes_list:
+        sn_translated = translation.createTranslation(note['note'], language)
+        pprint.pprint(sn_translated)
+    return render_template('index.html')
 
 
 @app.route('/add_note')
@@ -87,8 +95,8 @@ def login():
     if form.validate_on_submit():
         flash('Note Added: With course key: {} and Course Name: {}'.format(
             form.course_key.data, form.course_name.data))
-        new_note = Note( form.course_key.data, form.course_name.data, form.note.data)
+        course_name = form.course_name.data
+        new_note = Note( form.course_key.data, course_name.lower(), form.note.data)
         notesManager.add_note_to_db(new_note)
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
-
