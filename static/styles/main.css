@@ -927,10 +927,39 @@ form {
 }
 
 .s130 form .inner-form .input-field.second-wrap {
+    min-width: 124px;
+}
+
+.s130 form .inner-form .input-field.second-wrap .language-choice {
+    height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 20px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    background: #00ad5f;
+    transition: all 0.2s ease-out, color 0.2s ease-out;
+    font-weight: 300;
+    padding-left: 20%;
+}
+
+.s130 form .inner-form .input-field.second-wrap .language-choice:hover {
+    background: #009451;
+}
+
+.s130 form .inner-form .input-field.second-wrap .language-choice:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.s130 form .inner-form .input-field.third-wrap {
     min-width: 216px;
 }
 
-.s130 form .inner-form .input-field.second-wrap .btn-search {
+.s130 form .inner-form .input-field.third-wrap .btn-search {
     height: 100%;
     width: 100%;
     white-space: nowrap;
@@ -945,11 +974,11 @@ form {
     font-weight: 300;
 }
 
-.s130 form .inner-form .input-field.second-wrap .btn-search:hover {
+.s130 form .inner-form .input-field.third-wrap .btn-search:hover {
     background: #009451;
 }
 
-.s130 form .inner-form .input-field.second-wrap .btn-search:focus {
+.s130 form .inner-form .input-field.third-wrap .btn-search:focus {
     outline: 0;
     box-shadow: none;
 }
@@ -985,9 +1014,15 @@ form {
         fill: #222;
     }
     .s130 form .inner-form .input-field.second-wrap {
-        min-width: 100px;
+        min-width: 50px;
     }
     .s130 form .inner-form .input-field.second-wrap .btn-search {
+        font-size: 13px;
+    }
+    .s130 form .inner-form .input-field.third-wrap {
+        min-width: 100px;
+    }
+    .s130 form .inner-form .input-field.third-wrap .btn-search {
         font-size: 13px;
     }
 }
