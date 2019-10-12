@@ -1,3 +1,9 @@
+import pprint
+from twilio.rest import Client
+from twilio.twiml.messaging_response import MessagingResponse
+from firebase_admin import credentials
+import firebase_admin
+from database import DatabaseManager, Note
 from flask import Flask, render_template, request, flash, redirect
 import getsearch
 from forms import AddNoteForm
@@ -8,22 +14,18 @@ credential_path = "TranslationKey.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-from database import DatabaseManager, Note
-import firebase_admin
-from firebase_admin import credentials
-from twilio.twiml.messaging_response import MessagingResponse
-from twilio.rest import Client
 
 lang = "en"
 
-import pprint
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 if (not len(firebase_admin._apps)):
-    cred = credentials.Certificate('static/mhacks12-22906-firebase-adminsdk-lbt7e-d7c9a27bb5.json')
-    default_app = firebase_admin.initialize_app(cred,  {'databaseURL': 'https://mhacks12-22906.firebaseio.com/'})
+    cred = credentials.Certificate(
+        'static/mhacks12-22906-firebase-adminsdk-lbt7e-d7c9a27bb5.json')
+    default_app = firebase_admin.initialize_app(
+        cred,  {'databaseURL': 'https://mhacks12-22906.firebaseio.com/'})
 previous = ""
 account_sid = 'ACfb14e1aca55a02457161456ad28e2311'
 auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
@@ -31,6 +33,7 @@ auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
 dm = DatabaseManager("super_notes")
 notesManager = DatabaseManager("notes")
 sn_translated = "Oops! Something's wrong with Twilio servers!"
+
 
 @app.route('/')
 def main():
@@ -59,7 +62,7 @@ def sms_ahoy_reply():
         print(".1.1.1.1.1.1.1")
         print(premes)
         print(".1.1.1.1.1.1.1")
-    
+
     if(translation.createTranslation(premes, "English").lower() in courses):
         super_notes_list = dm.find_notes_by_course_name(translation.createTranslation(premes, language="en").lower())
         print("----------")
@@ -70,9 +73,10 @@ def sms_ahoy_reply():
             print(note['note'])
         resp.message(sn_translated)
         return str(resp)
-    
+
     lang = str(premes)
-    resp.message(translation.createTranslation("Enter a course you wish to learn about.", language=lang))
+    resp.message(translation.createTranslation(
+        "Enter a course you wish to learn about.", language=lang))
     return str(resp)
 
 
@@ -80,9 +84,11 @@ def get_supernote(course):
     cl = dm.find_notes_by_course_name(course)
     return cl
 
+
 @app.route("/results")
 def results():
     return render_template('results.html')
+
 
 @app.route('/<search>/<language>', methods=['GET', 'POST'])
 def pass_val(search, language):
@@ -94,13 +100,14 @@ def pass_val(search, language):
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
         pprint.pprint(sn_translated)
-    return render_template('index.html')
+    return "hello"
 
 
-@app.route('/add_note')
+@app.route('/addnote.html')
 def add_note():
     form = AddNoteForm()
     return render_template('addnote.html', title='Add New Note', form=form)
+
 
 @app.route('/add_note', methods=['GET', 'POST'])
 def login():
@@ -109,7 +116,8 @@ def login():
         flash('Note Added: With course key: {} and Course Name: {}'.format(
             form.course_key.data, form.course_name.data))
         course_name = form.course_name.data
-        new_note = Note( form.course_key.data, course_name.lower(), form.note.data)
+        new_note = Note(form.course_key.data,
+                        course_name.lower(), form.note.data)
         notesManager.add_note_to_db(new_note)
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
