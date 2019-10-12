@@ -4,7 +4,7 @@ from forms import AddNoteForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-from database import DatabaseManager
+from database import DatabaseManager, Note
 import firebase_admin
 from firebase_admin import credentials
 from twilio.twiml.messaging_response import MessagingResponse
@@ -21,6 +21,7 @@ lang = ""
 previous = ""
 
 dm = DatabaseManager("super_notes")
+notesManager = DatabaseManager("notes")
 
 @app.route('/')
 def main():
@@ -77,5 +78,7 @@ def login():
     if form.validate_on_submit():
         flash('Note Added: With course key: {} and Course Name: {}'.format(
             form.course_key.data, form.course_name.data))
+        new_note = Note( form.course_key.data, form.course_name.data, form.note.data)
+        notesManager.add_note_to_db(new_note)
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
