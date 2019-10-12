@@ -14,7 +14,7 @@ class Note():
         self.course_key = course_key
         self.course_name = course_name
         self.note = note
-        date_added = datetime.datetime.now()
+        self.date_added = datetime.datetime.now()
 
 class DatabaseManager():
     # Fetch the service account key JSON file contents
@@ -33,7 +33,8 @@ class DatabaseManager():
         new_note = self.ref.push({
                     'course_key': note.course_key,
                     'course_name': note.course_name,
-                    'note': note.note
+                    'note': note.note,
+                    'datetime': self.date_added
                 })
 
         return new_note.key
