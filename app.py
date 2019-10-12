@@ -90,8 +90,11 @@ def results():
     return render_template('results.html')
 
 
-@app.route('/<search>/<language>', methods=['GET', 'POST'])
-def pass_val(search, language):
+@app.route('/search', methods=['POST'])
+def pass_val():
+    search = request.form.get('search')
+    language = request.form.get('language-choice')
+    print(language)
     print(search + language)
     s = translation.createTranslation(search, "EN")
     print(s)
@@ -100,7 +103,7 @@ def pass_val(search, language):
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
         pprint.pprint(sn_translated)
-    return "hello"
+    return render_template('results.html', note=sn_translated)
 
 
 @app.route('/addnote.html')

@@ -14,7 +14,7 @@
             rel="stylesheet"
         />
     </head>
-    <body>
+    <body><a href="javascript:history.back()"><img style="position: fixed; z-index: 10; padding-left:2em;" src = "../static/images/back_arrow.png" alt = "back" width = "180px" height = "140px"></a>
         <div class="s130">
             <center>
                 <h1
@@ -43,7 +43,7 @@
                     </p>
                     <p>
                         {{ form.note.label }}<br />
-                        {{ form.note(cols="55", rows="16") }}
+                        {{ form.note(cols="55", rows="15") }}
                     </p>
                     <p>{{ form.submit() }}</p>
                 </form>
