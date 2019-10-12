@@ -101,10 +101,14 @@ def pass_val():
     print(s)
     super_notes_list = dm.find_notes_by_course_name(s)
     pprint.pprint(super_notes_list)
+    
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
+        title_translated = translation.createTranslation(note['course_name'], language)
         pprint.pprint(sn_translated)
-    return render_template('results.html', note=sn_translated)
+    sn_translated = sn_translated.replace('\n', '<br/> - ')
+    print(sn_translated)
+    return render_template('results.html', note=sn_translated, title=title_translated)
 
 
 @app.route('/addnote.html')
