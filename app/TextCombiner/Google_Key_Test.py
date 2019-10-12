@@ -7,6 +7,8 @@ def run_quickstart():
     from google.cloud.language import enums
     from google.cloud.language import types
     # [END language_python_migration_imports]
+    from database import DatabaseManager
+    dataMan = DatabaseManager()
 
     # Instantiates a client
     # [START language_python_migration_client]
@@ -17,15 +19,16 @@ def run_quickstart():
     #       READ VALUE 1
     # __________________________
 
-    with open('input1.txt', 'r') as file:
-        text1 = file.read().replace('\n', '')
+    # with open('input1.txt', 'r') as file:
+    #     text1 = file.read().replace('\n', '')
+
 
     # ___________________________
     #       READ VALUE 2
     # ___________________________
 
-    with open('input2.txt', 'r') as file2:
-        text2 = file2.read().replace('\n', '')
+    # with open('input2.txt', 'r') as file2:
+    #     text2 = file2.read().replace('\n', '')
 
     words1 = text1.split(".")
     words2 = text2.split(".")
