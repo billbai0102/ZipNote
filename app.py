@@ -8,6 +8,7 @@ from database import DatabaseManager, Note
 import firebase_admin
 from firebase_admin import credentials
 from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
 import translation
 
 import pprint
@@ -21,6 +22,8 @@ if (not len(firebase_admin._apps)):
 
 lang = ""
 previous = ""
+account_sid = 'ACfb14e1aca55a02457161456ad28e2311'
+auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
 
 dm = DatabaseManager("super_notes")
 notesManager = DatabaseManager("notes")
@@ -36,12 +39,18 @@ def index():
     user = "Bill"
     return render_template('index.html', data=data, user=user)
 
-'''
+
+#####TWILIO######
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
-    """"Respond to incoming messages with a friendly SMS.""""
+    client = Client(account_sid, auth_token)
     resp = MessagingResponse()
-    lang = str(resp)
+    premes = ""
+    messages = client.messages.list(limit=1)
+
+    for record in messages:
+        premes=record.body
+    lang = premes
     resp.message(translation.createTranslation("Enter a course you wish to learn about.", language=lang))
     return str(resp)
     # # Add a message
@@ -49,14 +58,9 @@ def sms_ahoy_reply():
 
     # return str(resp)
 
-'''
-
 def get_supernote(course):
     cl = dm.find_notes_by_course_name(course)
     return cl
-
-
-    return render_template('index.html')
 
 @app.route("/results")
 def results():
