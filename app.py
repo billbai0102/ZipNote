@@ -53,19 +53,20 @@ def index():
 def sms_ahoy_reply():
     global lang
     global sn_translated
-    courses=["physics", "computer science"] ##WHERE THE COURSES ARE STORED
+    courses = ["physics", "computer science"]  # WHERE THE COURSES ARE STORED
     client = Client(account_sid, auth_token)
     resp = MessagingResponse()
     premes = ""
     messages = client.messages.list(limit=1)
     for record in messages:
-        premes=record.body
+        premes = record.body
         print(".1.1.1.1.1.1.1")
         print(premes)
         print(".1.1.1.1.1.1.1")
 
     if(translation.createTranslation(premes, "English").lower() in courses):
-        super_notes_list = dm.find_notes_by_course_name(translation.createTranslation(premes, language="en").lower())
+        super_notes_list = dm.find_notes_by_course_name(
+            translation.createTranslation(premes, language="en").lower())
         print("----------")
         print(lang)
         print("----------")
@@ -107,10 +108,10 @@ def pass_val():
     return render_template('results.html', note=sn_translated)
 
 
-@app.route('/addnote.html')
+@app.route('/add_note.html')
 def add_note():
     form = AddNoteForm()
-    return render_template('addnote.html', title='Add New Note', form=form)
+    return render_template('add_note.html', title='Add New Note', form=form)
 
 
 @app.route('/add_note', methods=['GET', 'POST'])
@@ -126,6 +127,7 @@ def add_new_note():
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
 
+
 @app.route('/super_note', methods=['POST'])
 def generate_super_note():
     form = SuperNoteForm()
@@ -134,6 +136,7 @@ def generate_super_note():
         na = NoteAnalysis(form.key1.data, form.key2.data)
         sn = na.run_quickstart()
     return render_template('results.html', note=sn)
+
 
 @app.route('/super_note')
 def super_note():
