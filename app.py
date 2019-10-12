@@ -34,7 +34,7 @@ def index():
     user = "Bill"
     return render_template('index.html', data=data, user=user)
 
-"""
+'''
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
     """"Respond to incoming messages with a friendly SMS.""""
@@ -47,7 +47,7 @@ def sms_ahoy_reply():
 
     # return str(resp)
 
-"""
+'''
 
 def get_supernote(course):
     cl = dm.find_notes_by_course_name(course)
@@ -63,7 +63,7 @@ def results():
 @app.route('/<search>', methods=['GET', 'POST'])
 def pass_val(search):
     print(search)
-
+    if("phy" in search.)
     return render_template('index.html')
 
 
