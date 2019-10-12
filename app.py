@@ -6,9 +6,10 @@ import firebase_admin
 from database import DatabaseManager, Note
 from flask import Flask, render_template, request, flash, redirect
 import getsearch
-from forms import AddNoteForm
+from forms import AddNoteForm, SuperNoteForm
 import os
 import translation
+from Google_Key_Test import NoteAnalysis
 
 credential_path = "TranslationKey.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
@@ -113,7 +114,7 @@ def add_note():
 
 
 @app.route('/add_note', methods=['GET', 'POST'])
-def login():
+def add_new_note():
     form = AddNoteForm()
     if form.validate_on_submit():
         flash('Note Added: With course key: {} and Course Name: {}'.format(
@@ -124,3 +125,17 @@ def login():
         notesManager.add_note_to_db(new_note)
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
+
+@app.route('/super_note', methods=['POST'])
+def generate_super_note():
+    form = SuperNoteForm()
+    sn = ""
+    if form.validate_on_submit():
+        na = NoteAnalysis(form.key1.data, form.key2.data)
+        sn = na.run_quickstart()
+    return render_template('results.html', note=sn)
+
+@app.route('/super_note')
+def super_note():
+    form = SuperNoteForm()
+    return render_template('super_note.html', title='Generate Super Note', form=form)

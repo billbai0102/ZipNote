@@ -4,7 +4,6 @@ class NoteAnalysis:
     def __init__(self, note1_key, note2_key):
         self.note1_key = note1_key
         self.note2_key = note2_key
-        self.run_quickstart()
 
     def run_quickstart(self):
         from fuzzywuzzy import fuzz
@@ -154,6 +153,6 @@ class NoteAnalysis:
         # final.write(newValsString)
         # final.close()
 
-        print(key_sent_array_1)
+        return newValsString
 
-n = NoteAnalysis("-LqyiulvtclaFSFsC4_Q", "-Lqyl7NHN9vWsMeJYBIM")
+# n = NoteAnalysis("-LqyiulvtclaFSFsC4_Q", "-Lqyl7NHN9vWsMeJYBIM")
