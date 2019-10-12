@@ -1,8 +1,7 @@
-# "-LqyiulvtclaFSFsC4_Q"
-# "-Lqyl7NHN9vWsMeJYBIM"
+from app import DatabaseManager, Note
 
-class NoteAnalysis():
-    def __init___(self, note1_key, note2_key):
+class NoteAnalysis:
+    def __init__(self, note1_key, note2_key):
         self.note1_key = note1_key
         self.note2_key = note2_key
         self.run_quickstart()
@@ -144,7 +143,7 @@ class NoteAnalysis():
             newValsString += x + "\n"
 
         #writing to database
-        super_note = Note(2, "Physics", newValsString)
+        super_note = Note(2, "physics", newValsString)
         dataOut.add_note_to_db(super_note)
 
         #_______________________________________
@@ -157,5 +156,4 @@ class NoteAnalysis():
 
         print(key_sent_array_1)
 
-# if __name__ == '__main__':
-#     run_quickstart()
+n = NoteAnalysis("-LqyiulvtclaFSFsC4_Q", "-Lqyl7NHN9vWsMeJYBIM")

@@ -927,10 +927,10 @@ form {
 }
 
 .s130 form .inner-form .input-field.second-wrap {
-    min-width: 124px;
+    max-width: 164px;
 }
 
-.s130 form .inner-form .input-field.second-wrap .language-choice {
+.s130 form .inner-form .input-field.second-wrap #language-choice {
     height: 100%;
     width: 100%;
     white-space: nowrap;
@@ -946,11 +946,11 @@ form {
     padding-left: 20%;
 }
 
-.s130 form .inner-form .input-field.second-wrap .language-choice:hover {
+.s130 form .inner-form .input-field.second-wrap #language-choice:hover {
     background: #009451;
 }
 
-.s130 form .inner-form .input-field.second-wrap .language-choice:focus {
+.s130 form .inner-form .input-field.second-wrap #language-choice:focus {
     outline: 0;
     box-shadow: none;
 }
@@ -1017,7 +1017,7 @@ form {
     .s130 form .inner-form .input-field.second-wrap {
         min-width: 50px;
     }
-    .s130 form .inner-form .input-field.second-wrap .btn-search {
+    .s130 form .inner-form .input-field.second-wrap #language-choice {
         font-size: 13px;
     }
     .s130 form .inner-form .input-field.third-wrap {

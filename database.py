@@ -77,14 +77,6 @@ class DatabaseManager:
 # for d in kl:
 #     pprint.pprint(d)
 
-# cl = dm.find_notes_by_course_name("Physics")
-# print("\n\n COURSE NAME ONLY\n")
-# print(cl)
-
-# for d in cl:
-    
-#     pprint.pprint(d)
-
 #pprint.pprint(cl)
 
 # dm2 = DatabaseManager("super_notes")
