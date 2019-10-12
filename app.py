@@ -142,3 +142,19 @@ def generate_super_note():
 def super_note():
     form = SuperNoteForm()
     return render_template('super_note.html', title='Generate Super Note', form=form)
+
+
+@app.route('/search_key')
+def search_key_page():
+    return render_template('search_key.html')
+
+@app.route('/search_key', methods=['POST'])
+def search_key():
+    key = request.form.get('key')
+    language = request.form.get('language-choice')
+    print(key + language)
+    note_data = notesManager.get_note_key(key)
+    pprint.pprint(note_data)
+    sn_translated = translation.createTranslation(note_data["note"], language)
+    pprint.pprint(sn_translated)
+    return render_template('results.html', note=sn_translated)
