@@ -17,5 +17,3 @@ def createTranslation(text, language):
     except: 
         return 'Unfortunately, that language is not supported.'
     return translation['translatedText']
-
-print(createTranslation("Is this working?", "DE"))
