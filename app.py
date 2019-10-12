@@ -30,6 +30,7 @@ auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
 
 dm = DatabaseManager("super_notes")
 notesManager = DatabaseManager("notes")
+sn_translated = "Oops! Something's wrong with Twilio servers!"
 
 @app.route('/')
 def main():
@@ -47,6 +48,7 @@ def index():
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
     global lang
+    global sn_translated
     courses=["physics", "computer science"] ##WHERE THE COURSES ARE STORED
     client = Client(account_sid, auth_token)
     resp = MessagingResponse()
@@ -54,12 +56,21 @@ def sms_ahoy_reply():
     messages = client.messages.list(limit=1)
     for record in messages:
         premes=record.body
+        print(".1.1.1.1.1.1.1")
+        print(premes)
+        print(".1.1.1.1.1.1.1")
+    
     if(translation.createTranslation(premes, "English").lower() in courses):
-        super_notes_list = dm.find_notes_by_course_name(premes)
+        super_notes_list = dm.find_notes_by_course_name(translation.createTranslation(premes, language="en").lower())
+        print("----------")
+        print(lang)
+        print("----------")
         for note in super_notes_list:
             sn_translated = translation.createTranslation(note['note'], lang)
+            print(note['note'])
         resp.message(sn_translated)
         return str(resp)
+    
     lang = str(premes)
     resp.message(translation.createTranslation("Enter a course you wish to learn about.", language=lang))
     return str(resp)
