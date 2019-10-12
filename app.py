@@ -108,22 +108,22 @@ def pass_val():
     return render_template('results.html', note=sn_translated)
 
 
-@app.route('/add_note.html')
+@app.route('/add_note')
 def add_note():
     form = AddNoteForm()
     return render_template('add_note.html', title='Add New Note', form=form)
 
 
-@app.route('/add_note', methods=['GET', 'POST'])
+@app.route('/add_note', methods=['POST'])
 def add_new_note():
     form = AddNoteForm()
     if form.validate_on_submit():
-        flash('Note Added: With course key: {} and Course Name: {}'.format(
-            form.course_key.data, form.course_name.data))
         course_name = form.course_name.data
         new_note = Note(form.course_key.data,
                         course_name.lower(), form.note.data)
-        notesManager.add_note_to_db(new_note)
+        note_key = notesManager.add_note_to_db(new_note)
+        flash('Note Added: With course key: {} and Course Name: {} . Share your notes with your friends: {}'.format(
+            form.course_key.data, form.course_name.data, note_key))
         return redirect('/index')
     return render_template('add_note.html', title='Add New Note', form=form)
 
