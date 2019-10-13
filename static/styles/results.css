@@ -13,14 +13,12 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-    margin: 0;
-	text-align: center;
     background: url('../images/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
     background-position: 0px -130px;
     background-size: 100%;
 }
 
-.texts{
+.texts {
     background: url('../images/results_background.jpg');
     background-size: 100%;
     padding: 20px;

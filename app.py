@@ -102,10 +102,11 @@ def pass_val():
     print(s)
     super_notes_list = dm.find_notes_by_course_name(s)
     pprint.pprint(super_notes_list)
-    
+
     for note in super_notes_list:
         sn_translated = translation.createTranslation(note['note'], language)
-        title_translated = translation.createTranslation(note['course_name'], language)
+        title_translated = translation.createTranslation(
+            note['course_name'], language)
         pprint.pprint(sn_translated)
     sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
@@ -129,6 +130,7 @@ def add_new_note():
         flash('Note Added: With course key: {} and Course Name: {} . Share your notes with your friends: {}'.format(
             form.course_key.data, form.course_name.data, note_key))
         return redirect('/index')
+    flash('Please enter notes to add.')
     return render_template('add_note.html', title='Add New Note', form=form)
 
 
@@ -151,6 +153,7 @@ def super_note():
 @app.route('/search_key')
 def search_key_page():
     return render_template('search_key.html')
+
 
 @app.route('/search_key', methods=['POST'])
 def search_key():
