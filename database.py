@@ -52,6 +52,19 @@ class DatabaseManager:
             data.append(val)
 
         return data
+    
+    def get_last_super_note_key(self, course_name):
+        myref = db.reference('super_notes')
+        snapshot = myref.order_by_child('course_name').equal_to(course_name).limit_to_last(1).get()
+        for key in snapshot:
+            return key
+    
+      
+    def get_last_course_note_key(self, course_name):
+        myref = db.reference('notes')
+        snapshot = myref.order_by_child('course_name').equal_to(course_name).limit_to_last(1).get()
+        for key in snapshot:
+            return key
 
 
 #DEBUG

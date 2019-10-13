@@ -100,15 +100,14 @@ def pass_val():
     print(search + language)
     s = translation.createTranslation(search, "EN")
     print(s)
-    super_notes_list = dm.find_notes_by_course_name(s)
-    pprint.pprint(super_notes_list)
+    super_note = dm.get_note_key(dm.get_last_super_note_key(s)) #dm.find_notes_by_course_name(s)
+    pprint.pprint(super_note)
 
-    for note in super_notes_list:
-        sn_translated = translation.createTranslation(note['note'], language)
-        title_translated = translation.createTranslation(
-            note['course_name'], language)
-        pprint.pprint(sn_translated)
-    sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
+    sn_translated = translation.createTranslation(super_note['note'], language)
+    title_translated = translation.createTranslation(
+        super_note['course_name'], language)
+    pprint.pprint(sn_translated)
+    # sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
     return render_template('results.html', note=sn_translated, title=title_translated)
 
@@ -124,13 +123,14 @@ def add_new_note():
     form = AddNoteForm()
     if form.validate_on_submit():
         course_name = form.course_name.data
+        n_translated = translation.createTranslation(form.note.data, "EN")
         new_note = Note(form.course_key.data,
-                        course_name.lower(), form.note.data)
+                        course_name.lower(), n_translated)
         note_key = notesManager.add_note_to_db(new_note)
-        flash('Note Added: With course key: {} and Course Name: {} . Share your notes with your friends: {}'.format(
+        flash('Note Added: With course key: {} and Course Name: {} .  Share your notes with your friends or save it for future use: {}'.format(
             form.course_key.data, form.course_name.data, note_key))
+        auto_gen_super_note(course_name.lower())
         return redirect('/index')
-    flash('Please enter notes to add.')
     return render_template('add_note.html', title='Add New Note', form=form)
 
 
@@ -165,3 +165,10 @@ def search_key():
     sn_translated = translation.createTranslation(note_data["note"], language)
     pprint.pprint(sn_translated)
     return render_template('results.html', note=sn_translated)
+
+def auto_gen_super_note(course_name):
+    last_super_note_key = dm.get_last_super_note_key(course_name)
+    last_course_note_key = notesManager.get_last_course_note_key(course_name)
+
+    na = NoteAnalysis(last_super_note_key, last_course_note_key)
+    sn = na.run_quickstart()

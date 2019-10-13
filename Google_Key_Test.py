@@ -23,7 +23,7 @@ class NoteAnalysis:
         client = language.LanguageServiceClient()
         # [END language_python_migration_client]
 
-        text1 = dataIn.get_note_key(self.note1_key)["note"]
+        text1 = dataOut.get_note_key(self.note1_key)["note"]
         text2 = dataIn.get_note_key(self.note2_key)["note"]
 
         # __________________________
