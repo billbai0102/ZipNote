@@ -1,4 +1,4 @@
-# <center> School Notes Optimization </center>
+# <center> ZipNotes </center>
 
 Our MHacks project for 2019 is a web app used to help students better utilize their notes in class. The theme is 'social good' and we thought finding a way to make a better learning environment would fit this theme.
 
