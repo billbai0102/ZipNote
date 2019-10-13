@@ -107,7 +107,7 @@ def pass_val():
         sn_translated = translation.createTranslation(note['note'], language)
         title_translated = translation.createTranslation(note['course_name'], language)
         pprint.pprint(sn_translated)
-    sn_translated = sn_translated.replace('\n', '<br/> - ')
+    sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
     return render_template('results.html', note=sn_translated, title=title_translated)
 

@@ -8,12 +8,9 @@
             href="https://fonts.googleapis.com/css?family=Poppins"
             rel="stylesheet"
         />
-        <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='styles/results.css') }}" rel="stylesheet" />
     </head>
     <body>
-        <!-- <h1 style=";">
-            {{title}}        
-        </h1> -->
 		<p style="float: right;">
 	<img
             style="top: 20px; right: 20px; position: absolute;"
@@ -22,22 +19,30 @@
             width="180px"
             height="140px"
     /></p>
+
         <div class="s130"
         style="font-size:20px; 
         padding-left : 20%; 
         padding-right: 20%;
-        padding-top: 10%;">
+        padding-top: 5%;">
+
+            <div class="texts">
+
+                    <h1
+    style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+1px 1px 0 #000; font-size: 40px;
+color: #00AD5F;"
+>
+   {{title}}
+</h1>
+
             {% autoescape false %}
             {{note}}
             {% endautoescape %}
         </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../static/js/extention/choices.js"></script>
     </body>
-    <style>
-        body{
-            background-color: lightgray;
-        }
-    </style>
     <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
