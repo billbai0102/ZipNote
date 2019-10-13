@@ -7,7 +7,10 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 def createTranslation(text, language):
     translate_client = translate.Client()
-    language = iso.to_iso639_1(language)
+    try:
+        language = iso.to_iso639_1(language)
+    except: 
+        language = iso.to_iso639_1(language)
 
     try:
         translation = translate_client.translate(

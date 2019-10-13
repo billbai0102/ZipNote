@@ -14,229 +14,228 @@
 //     });
 // });
 
+
 function googleTranslateElementInit() {
     new google.translate.TranslateElement(
         { pageLanguage: 'en' },
         'google_translate_element'
     );
-    console.log('hi');
 }
 
 $(document).ready(function() {
     setTimeout(function() {
         document.getElementsByClassName('goog-te-combo')[0].name =
             'language-choice';
-        let l = document.getElementsByClassName('goog-te-combo')[0];
+        document.getElementsByClassName('goog-te-combo')[0].id =
+            'language-choice';
+        document.getElementsByClassName('goog-te-combo')[0].onchange = 'update()';
 
         document.getElementsByClassName('goog-te-combo')[0].options[1].text =
-            'Afrikanns'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[2].text =
-            'Shqiptar'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[3].text =
-            'ኣማርኛ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[4].text =
-            'العربية'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[5].text =
-            'Հայերէն'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[6].text =
-            'آذربايجانجا ديلي'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[7].text =
-            'Euskara'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[8].text =
-            'Беларуская мова'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[9].text =
-            'বাংলা'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[10].text =
-            'بۉسانسقى'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[11].text =
-            'български'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[12].text =
-            'català'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[13].text =
-            'Sinugboanon'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[14].text =
-            '中文'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[15].text =
-            '中國傳統'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[16].text =
-            'Corsu'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[17].text =
-            'Hrvatski'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[18].text =
-            'čeština'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[19].text =
-            'dansk'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[20].text =
-            'Nederlands'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[21].text =
-            'Esperanto'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[22].text =
-            'Eesti keel'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[23].text =
-            'Suomi'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[24].text =
-            'Français'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[25].text =
-            'Noordfreesk'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[26].text =
-            'Galego'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[27].text =
-            'ქართული'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[28].text =
-            'Deutsch'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[29].text =
-            'ελληνικά'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[30].text =
-            'Kreyòl ayisyen'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[31].text =
-            'حَوْسَ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[32].text =
-            'ʻōlelo Hawaiʻi'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[33].text =
-            'עברית'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[34].text =
-            'हिन्दी'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[35].text =
-            'Hmong'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[36].text =
-            'Magyar'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[37].text =
-            'Íslenska'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[38].text =
-            'Igbo'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[39].text =
-            'Bahasa'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[40].text =
-            'Gaeilge'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[41].text =
-            'Italiano'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[42].text =
-            '日本語'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[43].text =
-            'Basa Jawa'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[44].text =
-            'ಕನ್ನಡ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[45].text =
-            'Қазақ тілі'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[46].text =
-            'ភាសាខ្មែរ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[47].text =
-            '한국어'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[48].text =
-            'Kurdí'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[49].text =
-            'Kyrgyz'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[50].text =
-            'ພາສາລາວ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[51].text =
-            'Lingua Latina'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[52].text =
-            'Latviešu valoda'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[53].text =
-            'Lietuvių'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[54].text =
-            'Lëtzebuergesch'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[55].text =
-            'македонски'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[56].text =
-            'Malagasy'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[57].text =
-            'melayu'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[58].text =
-            'മലയാളം'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[59].text =
-            'Malti'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[60].text =
-            'Maori'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[61].text =
-            'मराठी'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[62].text =
-            'Norsk'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[63].text =
-            'Chicheŵa'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[64].text =
-            'پښتو'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[65].text =
-            'فارسى'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[66].text =
-            'polski'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[67].text =
-            'português'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[68].text =
-            'ਪੰਜਾਬੀ'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[69].text =
-            'român'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[70].text =
-            'Русский язык'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[71].text =
-            'Gagana Samoa'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[72].text =
-            'Gàidhlig'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[73].text =
-            'српски'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[74].text =
-            'Sesotho'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[75].text =
-            'chiShona'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[76].text =
-            'سنڌي'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[77].text =
-            'සිංහල'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[78].text =
-            'slovenčina'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[79].text =
-            'slovenščina'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[80].text =
-            'Soomaali'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[81].text =
-            'español'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[82].text =
-            'Basa Sunda'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[83].text =
-            'Kiswahili'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[84].text =
-            'Svenska'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[85].text =
-            'Tagalog'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[86].text =
-            'тоҷики'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[87].text =
-            'தமிழ்'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[88].text =
-            'తెలుగు'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[89].text =
-            'ภาษาไทย'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[90].text =
-            'Türkçe'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[91].text =
-            'Українська'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[92].text =
-            'اردو'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[93].text =
-            'o’zbek tili ўзбек тили'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[94].text =
-            'tiếng việt'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[95].text =
-            'Cymraeg'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[96].text =
-            'isiXhosa'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[97].text =
-            'ײִדיש'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[98].text =
-            'Yorùbá'; //TODO add all language changes here
-            document.getElementsByClassName('goog-te-combo')[0].options[99].text =
-            'isiZulu'; //TODO add all language changes here
-
-            
-
-
+            'Afrikanns';
+        document.getElementsByClassName('goog-te-combo')[0].options[2].text =
+            'Shqiptar';
+        document.getElementsByClassName('goog-te-combo')[0].options[3].text =
+            'ኣማርኛ';
+        document.getElementsByClassName('goog-te-combo')[0].options[4].text =
+            'العربية';
+        document.getElementsByClassName('goog-te-combo')[0].options[5].text =
+            'Հայերէն';
+        document.getElementsByClassName('goog-te-combo')[0].options[6].text =
+            'آذربايجانجا ديلي';
+        document.getElementsByClassName('goog-te-combo')[0].options[7].text =
+            'Euskara';
+        document.getElementsByClassName('goog-te-combo')[0].options[8].text =
+            'Беларуская мова';
+        document.getElementsByClassName('goog-te-combo')[0].options[9].text =
+            'বাংলা';
+        document.getElementsByClassName('goog-te-combo')[0].options[10].text =
+            'بۉسانسقى';
+        document.getElementsByClassName('goog-te-combo')[0].options[11].text =
+            'български';
+        document.getElementsByClassName('goog-te-combo')[0].options[12].text =
+            'català';
+        document.getElementsByClassName('goog-te-combo')[0].options[13].text =
+            'Sinugboanon';
+        document.getElementsByClassName('goog-te-combo')[0].options[14].text =
+            '中文';
+        document.getElementsByClassName('goog-te-combo')[0].options[15].text =
+            '中國傳統';
+        document.getElementsByClassName('goog-te-combo')[0].options[16].text =
+            'Corsu';
+        document.getElementsByClassName('goog-te-combo')[0].options[17].text =
+            'Hrvatski';
+        document.getElementsByClassName('goog-te-combo')[0].options[18].text =
+            'čeština';
+        document.getElementsByClassName('goog-te-combo')[0].options[19].text =
+            'dansk';
+        document.getElementsByClassName('goog-te-combo')[0].options[20].text =
+            'Nederlands';
+        document.getElementsByClassName('goog-te-combo')[0].options[21].text =
+            'Esperanto';
+        document.getElementsByClassName('goog-te-combo')[0].options[22].text =
+            'Eesti keel';
+        document.getElementsByClassName('goog-te-combo')[0].options[23].text =
+            'Suomi';
+        document.getElementsByClassName('goog-te-combo')[0].options[24].text =
+            'Français';
+        document.getElementsByClassName('goog-te-combo')[0].options[25].text =
+            'Noordfreesk';
+        document.getElementsByClassName('goog-te-combo')[0].options[26].text =
+            'Galego';
+        document.getElementsByClassName('goog-te-combo')[0].options[27].text =
+            'ქართული';
+        document.getElementsByClassName('goog-te-combo')[0].options[28].text =
+            'Deutsch';
+        document.getElementsByClassName('goog-te-combo')[0].options[29].text =
+            'ελληνικά';
+        document.getElementsByClassName('goog-te-combo')[0].options[30].text =
+            'Kreyòl ayisyen';
+        document.getElementsByClassName('goog-te-combo')[0].options[31].text =
+            'حَوْسَ';
+        document.getElementsByClassName('goog-te-combo')[0].options[32].text =
+            'ʻōlelo Hawaiʻi';
+        document.getElementsByClassName('goog-te-combo')[0].options[33].text =
+            'עברית';
+        document.getElementsByClassName('goog-te-combo')[0].options[34].text =
+            'हिन्दी';
+        document.getElementsByClassName('goog-te-combo')[0].options[35].text =
+            'Hmong';
+        document.getElementsByClassName('goog-te-combo')[0].options[36].text =
+            'Magyar';
+        document.getElementsByClassName('goog-te-combo')[0].options[37].text =
+            'Íslenska';
+        document.getElementsByClassName('goog-te-combo')[0].options[38].text =
+            'Igbo';
+        document.getElementsByClassName('goog-te-combo')[0].options[39].text =
+            'Bahasa';
+        document.getElementsByClassName('goog-te-combo')[0].options[40].text =
+            'Gaeilge';
+        document.getElementsByClassName('goog-te-combo')[0].options[41].text =
+            'Italiano';
+        document.getElementsByClassName('goog-te-combo')[0].options[42].text =
+            '日本語';
+        document.getElementsByClassName('goog-te-combo')[0].options[43].text =
+            'Basa Jawa';
+        document.getElementsByClassName('goog-te-combo')[0].options[44].text =
+            'ಕನ್ನಡ';
+        document.getElementsByClassName('goog-te-combo')[0].options[45].text =
+            'Қазақ тілі';
+        document.getElementsByClassName('goog-te-combo')[0].options[46].text =
+            'ភាសាខ្មែរ';
+        document.getElementsByClassName('goog-te-combo')[0].options[47].text =
+            '한국어';
+        document.getElementsByClassName('goog-te-combo')[0].options[48].text =
+            'Kurdí';
+        document.getElementsByClassName('goog-te-combo')[0].options[49].text =
+            'Kyrgyz';
+        document.getElementsByClassName('goog-te-combo')[0].options[50].text =
+            'ພາສາລາວ';
+        document.getElementsByClassName('goog-te-combo')[0].options[51].text =
+            'Lingua Latina';
+        document.getElementsByClassName('goog-te-combo')[0].options[52].text =
+            'Latviešu valoda';
+        document.getElementsByClassName('goog-te-combo')[0].options[53].text =
+            'Lietuvių';
+        document.getElementsByClassName('goog-te-combo')[0].options[54].text =
+            'Lëtzebuergesch';
+        document.getElementsByClassName('goog-te-combo')[0].options[55].text =
+            'македонски';
+        document.getElementsByClassName('goog-te-combo')[0].options[56].text =
+            'Malagasy';
+        document.getElementsByClassName('goog-te-combo')[0].options[57].text =
+            'melayu';
+        document.getElementsByClassName('goog-te-combo')[0].options[58].text =
+            'മലയാളം';
+        document.getElementsByClassName('goog-te-combo')[0].options[59].text =
+            'Malti';
+        document.getElementsByClassName('goog-te-combo')[0].options[60].text =
+            'Maori';
+        document.getElementsByClassName('goog-te-combo')[0].options[61].text =
+            'मराठी';
+        document.getElementsByClassName('goog-te-combo')[0].options[62].text =
+            'Norsk';
+        document.getElementsByClassName('goog-te-combo')[0].options[63].text =
+            'Chicheŵa';
+        document.getElementsByClassName('goog-te-combo')[0].options[64].text =
+            'پښتو';
+        document.getElementsByClassName('goog-te-combo')[0].options[65].text =
+            'فارسى';
+        document.getElementsByClassName('goog-te-combo')[0].options[66].text =
+            'polski';
+        document.getElementsByClassName('goog-te-combo')[0].options[67].text =
+            'português';
+        document.getElementsByClassName('goog-te-combo')[0].options[68].text =
+            'ਪੰਜਾਬੀ';
+        document.getElementsByClassName('goog-te-combo')[0].options[69].text =
+            'român';
+        document.getElementsByClassName('goog-te-combo')[0].options[70].text =
+            'Русский язык';
+        document.getElementsByClassName('goog-te-combo')[0].options[71].text =
+            'Gagana Samoa';
+        document.getElementsByClassName('goog-te-combo')[0].options[72].text =
+            'Gàidhlig';
+        document.getElementsByClassName('goog-te-combo')[0].options[73].text =
+            'српски';
+        document.getElementsByClassName('goog-te-combo')[0].options[74].text =
+            'Sesotho';
+        document.getElementsByClassName('goog-te-combo')[0].options[75].text =
+            'chiShona';
+        document.getElementsByClassName('goog-te-combo')[0].options[76].text =
+            'سنڌي';
+        document.getElementsByClassName('goog-te-combo')[0].options[77].text =
+            'සිංහල';
+        document.getElementsByClassName('goog-te-combo')[0].options[78].text =
+            'slovenčina';
+        document.getElementsByClassName('goog-te-combo')[0].options[79].text =
+            'slovenščina';
+        document.getElementsByClassName('goog-te-combo')[0].options[80].text =
+            'Soomaali';
+        document.getElementsByClassName('goog-te-combo')[0].options[81].text =
+            'español';
+        document.getElementsByClassName('goog-te-combo')[0].options[82].text =
+            'Basa Sunda';
+        document.getElementsByClassName('goog-te-combo')[0].options[83].text =
+            'Kiswahili';
+        document.getElementsByClassName('goog-te-combo')[0].options[84].text =
+            'Svenska';
+        document.getElementsByClassName('goog-te-combo')[0].options[85].text =
+            'Tagalog';
+        document.getElementsByClassName('goog-te-combo')[0].options[86].text =
+            'тоҷики';
+        document.getElementsByClassName('goog-te-combo')[0].options[87].text =
+            'தமிழ்';
+        document.getElementsByClassName('goog-te-combo')[0].options[88].text =
+            'తెలుగు';
+        document.getElementsByClassName('goog-te-combo')[0].options[89].text =
+            'ภาษาไทย';
+        document.getElementsByClassName('goog-te-combo')[0].options[90].text =
+            'Türkçe';
+        document.getElementsByClassName('goog-te-combo')[0].options[91].text =
+            'Українська';
+        document.getElementsByClassName('goog-te-combo')[0].options[92].text =
+            'اردو';
+        document.getElementsByClassName('goog-te-combo')[0].options[93].text =
+            'o’zbek tili ўзбек тили';
+        document.getElementsByClassName('goog-te-combo')[0].options[94].text =
+            'tiếng việt';
+        document.getElementsByClassName('goog-te-combo')[0].options[95].text =
+            'Cymraeg';
+        document.getElementsByClassName('goog-te-combo')[0].options[96].text =
+            'isiXhosa';
+        document.getElementsByClassName('goog-te-combo')[0].options[97].text =
+            'ײִדיש';
+        document.getElementsByClassName('goog-te-combo')[0].options[98].text =
+            'Yorùbá';
+        document.getElementsByClassName('goog-te-combo')[0].options[99].text =
+            'isiZulu';
 
         console.log(document.getElementsByClassName('goog-te-combo')[0]);
-    }, 500);
+    }, 1000);
 });
 
-{
-    /* <select
+
+
+/* <select
                             id="language-choice"
                             name="language-choice"
                             data-placeholder="Choose a Language..."
@@ -358,7 +357,6 @@ $(document).ready(function() {
                             <option value="Yoruba">Yorùbá</option>
                             <option value="Zulu">isiZulu</option>
                         </select> */
-}
 
 // function switchLang() {
 //     let language = document.getElementById('language-choice');
