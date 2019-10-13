@@ -158,7 +158,7 @@ def search_key_page():
 @app.route('/search_key', methods=['POST'])
 def search_key():
     key = request.form.get('key')
-    language = request.form.get('language-choice')
+    language = 'en' if request.form.get('language-choice') is " " or request.form.get('language-choice') is None else request.form.get('language-choice')
     print(key + language)
     note_data = notesManager.get_note_key(key)
     pprint.pprint(note_data)
@@ -172,3 +172,15 @@ def auto_gen_super_note(course_name):
 
     na = NoteAnalysis(last_super_note_key, last_course_note_key)
     sn = na.run_quickstart()
+
+@app.route("/upvote/<key>")
+def upvote(key):
+    up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
+    notesManager.update_data(key, "upvotes", up + 1)
+    return redirect('/index')
+
+@app.route("/downvote/<key>")
+def downvote(key):
+    up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
+    notesManager.update_data(key, "upvotes", up - 1)
+    return redirect('/index')

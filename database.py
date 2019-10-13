@@ -7,6 +7,7 @@ class Note:
     course_name = "None"
     note = ""
     date_added = datetime.datetime.now()
+    upvotes = 0
 
     def __init__(self, course_key, course_name, note):
         self.course_key = course_key
@@ -26,7 +27,8 @@ class DatabaseManager:
         new_note = self.ref.push({
                     'course_key': note.course_key,
                     'course_name': note.course_name,
-                    'note': note.note
+                    'note': note.note,
+                    'upvotes' : note.upvotes,
                 })
 
         return new_note.key
@@ -65,6 +67,12 @@ class DatabaseManager:
         snapshot = myref.order_by_child('course_name').equal_to(course_name).limit_to_last(1).get()
         for key in snapshot:
             return key
+    
+    def update_data(self, key, data_key, data_value):
+        data = self.ref.child(key)
+        data.update({
+            data_key : data_value
+        })
 
 
 #DEBUG
