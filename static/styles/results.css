@@ -1040,12 +1040,12 @@ p > .vote > i:focus {
     box-shadow: none;
 }
 
-p > .vote > .fa-thumbs-up{
+.fa-thumbs-up{
     font-size:48px;
     color:green;
 }
 
-p > .vote > .fa-thumbs-down{
+.fa-thumbs-down{
     font-size:48px;
     color:red;
 }

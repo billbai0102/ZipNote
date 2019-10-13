@@ -54,7 +54,7 @@ color: #00AD5F;"
                 {% endautoescape %}
 
                 <p>
-                    Upvotes: {{upvotes}} &nbsp;<button class="vote" onclick=window.location.reload()><a href="/upvote/{{key}}/{{note_type}}"><i class="fa fa-thumbs-up"></i></button></a><br />
+                    Votes: {{upvotes}} &nbsp;&nbsp;<button class="vote" onclick=window.location.reload()><a href="/upvote/{{key}}/{{note_type}}"><i class="fa fa-thumbs-up"></i></button></a>
                    <button class="vote"><a href="/downvote/{{key}}/{{note_type}}"><i class="fa fa-thumbs-down"></i></a></button>
                 </p>
             </div>
