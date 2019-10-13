@@ -14,12 +14,21 @@
 //     });
 // });
 
-// function googleTranslateElementInit() {
-//     new google.translate.TranslateElement(
-//         { pageLanguage: 'en' },
-//         'google_translate_element'
-//     );
-// }
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        { pageLanguage: 'en' },
+        'google_translate_element'
+    );
+    console.log('hi');
+}
+
+$(document).ready(function() {
+    setTimeout(function() {
+        document.getElementsByClassName('goog-te-combo')[0].name =
+            'language-choice';
+        console.log(document.getElementsByClassName('goog-te-combo')[0]);
+    }, 500);
+});
 
 // function switchLang() {
 //     let language = document.getElementById('language-choice');
