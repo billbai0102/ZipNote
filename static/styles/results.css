@@ -1028,15 +1028,44 @@ form {
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-#addNote > button:hover {
+#addNote > button:hover
+ {
     background: #000;
     color: #d9f1e3;
 }
 
-#addNote > button:focus {
+#addNote > button:focus,
+p > .vote > i:focus {
     outline: 0;
     box-shadow: none;
 }
+
+p > .vote > .fa-thumbs-up{
+    font-size:48px;
+    color:green;
+}
+
+p > .vote > .fa-thumbs-down{
+    font-size:48px;
+    color:red;
+}
+
+p > .vote {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    text-decoration: none;
+    border: none;
+    cursor: default;
+    overflow: hidden;        
+}
+
+p > .vote > i:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+
 
 @media screen and (max-width: 992px) {
     .s130 form .inner-form .input-field {
