@@ -30,6 +30,9 @@ $(document).ready(function() {
             'language-choice';
         document.getElementsByClassName('goog-te-combo')[0].onchange = 'update()';
 
+        document.getElementsByClassName('goog-te-combo')[0].options[0].value =
+        'en';
+
         document.getElementsByClassName('goog-te-combo')[0].options[1].text =
             'Afrikanns';
         document.getElementsByClassName('goog-te-combo')[0].options[2].text =

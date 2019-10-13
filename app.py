@@ -96,7 +96,7 @@ def results():
 @app.route('/search', methods=['POST'])
 def pass_val():
     search = request.form.get('search')
-    language = request.form.get('language-choice')
+    language = 'en' if request.form.get('language-choice') is " " or request.form.get('language-choice') is None else request.form.get('language-choice')
     print(language)
     print(search + language)
     s = translation.createTranslation(search, "EN")
@@ -113,7 +113,7 @@ def pass_val():
     pprint.pprint(sn_translated)
     # sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
-    return render_template('results.html', note=sn_translated, title=title_translated)
+    return render_template('results.html', note=sn_translated, title=title_translated, upvotes=super_note["upvotes"])
 
 
 @app.route('/add_note')
