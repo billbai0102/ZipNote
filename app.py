@@ -73,7 +73,8 @@ def sms_ahoy_reply():
         for note in super_notes_list:
             sn_translated = translation.createTranslation(note['note'], lang)
             print(note['note'])
-        resp.message(sn_translated)
+        sn_translated = sn_translated.replace('&#39;', '\'')
+        resp.message(sn_translated[:1550] + ".")
         return str(resp)
 
     lang = str(premes)
@@ -99,13 +100,16 @@ def pass_val():
     print(language)
     print(search + language)
     s = translation.createTranslation(search, "EN")
+    s = s.replace('&#39;', '\'')
     print(s)
     super_note = dm.get_note_key(dm.get_last_super_note_key(s)) #dm.find_notes_by_course_name(s)
     pprint.pprint(super_note)
 
     sn_translated = translation.createTranslation(super_note['note'], language)
+    sn_translated = sn_translated.replace('&#39;', '\'')
     title_translated = translation.createTranslation(
         super_note['course_name'], language)
+    title_translated = title_translated.replace('&#39;', '\'')
     pprint.pprint(sn_translated)
     # sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
@@ -124,6 +128,7 @@ def add_new_note():
     if form.validate_on_submit():
         course_name = form.course_name.data
         n_translated = translation.createTranslation(form.note.data, "EN")
+        n_translated = n_translated.replace('&#39;', '\'')
         new_note = Note(form.course_key.data,
                         course_name.lower(), n_translated)
         note_key = notesManager.add_note_to_db(new_note)
