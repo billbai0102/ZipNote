@@ -64,7 +64,11 @@
                             placeholder="Enter a Note Key"
                         />
                     </div>
-                    <div class="input-field second-wrap">
+                    <div
+                        class="input-field second-wrap"
+                        id="google_translate_element"
+                    ></div>
+                    <!-- <div class="input-field second-wrap">
                         <select
                             id="language-choice"
                             name="language-choice"
@@ -187,7 +191,7 @@
                             <option value="Yoruba">Yorùbá</option>
                             <option value="Zulu">isiZulu</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit">
                             Search
@@ -216,6 +220,10 @@
                 </div>
             </form>
         </div>
+        <script
+            type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        ></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../static/js/extention/choices.js"></script>
     </body>
