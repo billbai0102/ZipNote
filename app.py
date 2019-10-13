@@ -5,6 +5,7 @@ from firebase_admin import credentials
 import firebase_admin
 from database import DatabaseManager, Note
 from flask import Flask, render_template, request, flash, redirect
+import requests
 import getsearch
 from forms import AddNoteForm, SuperNoteForm
 import os
@@ -102,6 +103,8 @@ def pass_val():
     s = translation.createTranslation(search, "EN")
     s = s.replace('&#39;', '\'')
     print(s)
+    key = dm.get_last_super_note_key(s)
+    print(key)
     super_note = dm.get_note_key(dm.get_last_super_note_key(s)) #dm.find_notes_by_course_name(s)
     pprint.pprint(super_note)
 
@@ -113,7 +116,7 @@ def pass_val():
     pprint.pprint(sn_translated)
     # sn_translated = sn_translated.replace('\n', '<br/><br/> - ')
     print(sn_translated)
-    return render_template('results.html', note=sn_translated, title=title_translated, upvotes=super_note["upvotes"])
+    return render_template('results.html', note=sn_translated, title=title_translated, upvotes=super_note["upvotes"], key = key, note_type = "super_note")
 
 
 @app.route('/add_note')
@@ -169,7 +172,7 @@ def search_key():
     pprint.pprint(note_data)
     sn_translated = translation.createTranslation(note_data["note"], language)
     pprint.pprint(sn_translated)
-    return render_template('results.html', note=sn_translated)
+    return render_template('results.html', note=sn_translated, upvotes=note_data["upvotes"], key = key, note_type = "note")
 
 def auto_gen_super_note(course_name):
     last_super_note_key = dm.get_last_super_note_key(course_name)
@@ -178,14 +181,22 @@ def auto_gen_super_note(course_name):
     na = NoteAnalysis(last_super_note_key, last_course_note_key)
     sn = na.run_quickstart()
 
-@app.route("/upvote/<key>")
-def upvote(key):
-    up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
-    notesManager.update_data(key, "upvotes", up + 1)
+@app.route("/upvote/<key>/<note_type>")
+def upvote(key, note_type):
+    if note_type == "super_note":
+        up = 0 if dm.get_note_key(key)["upvotes"] is None else dm.get_note_key(key)["upvotes"]
+        dm.update_data(key, "upvotes", up + 1)
+    else:
+        up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
+        notesManager.update_data(key, "upvotes", up + 1)
     return redirect('/index')
 
-@app.route("/downvote/<key>")
-def downvote(key):
-    up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
-    notesManager.update_data(key, "upvotes", up - 1)
+@app.route("/downvote/<key>/<note_type>")
+def downvote(key, note_type):
+    if note_type == "super_note":
+        up = 0 if dm.get_note_key(key)["upvotes"] is None else dm.get_note_key(key)["upvotes"]
+        dm.update_data(key, "upvotes", up - 1)
+    else:
+        up = 0 if notesManager.get_note_key(key)["upvotes"] is None else notesManager.get_note_key(key)["upvotes"]
+        notesManager.update_data(key, "upvotes", up - 1)
     return redirect('/index')
