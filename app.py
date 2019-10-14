@@ -29,8 +29,8 @@ if (not len(firebase_admin._apps)):
     default_app = firebase_admin.initialize_app(
         cred,  {'databaseURL': 'https://mhacks12-22906.firebaseio.com/'})
 previous = ""
-account_sid = 'ACfb14e1aca55a02457161456ad28e2311'
-auth_token = 'cb9d1579d693aa64d9e4d7a113efebbe'
+account_sid = '[contact billbai0102@gmail.com for twilio SID]'
+auth_token = '[contact billbai0102@gmail.com for twilio private API key]'
 
 dm = DatabaseManager("super_notes")
 notesManager = DatabaseManager("notes")
