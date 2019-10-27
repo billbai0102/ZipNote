@@ -1,4 +1,4 @@
-# <center> ZipNotes </center>
+# <center> ZipNote - By Bill Bai, Aditya Dutta, Emerson Pfeiffer, and Andrey Starenky. </center>
 
 Our MHacks project for 2019 is a web app used to help students better utilize their notes in class. The theme is 'social good' and we thought finding a way to make a better learning environment would fit this theme. As well, we implemented the Twilio API to allow students with limited internet, such as those in third world countries, to access the notes by SMS or VoIP.
 
